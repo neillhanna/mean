@@ -1,0 +1,32 @@
+/*general styles*/
+body { padding-top: 50px; background:#000 url('/images/fractal.png') top center no-repeat; }
+.row { margin:0; }
+.fullwidth { width:100%; }
+
+
+/*header styles*/
+header { height:20px; width:100%; }
+
+/*footer styles*/
+footer { height:300px; width:100%; background:#000; }
+footer .row { padding:20px; }
+
+/*PAGES*/
+
+/*index page*/
+
+/*mean*/
+#pageMean { 
+    text-align:center;
+    background:#002a36 url('/images/codemean.jpg') top left no-repeat;
+    color:#fff;    
+}
+.tile { padding:20px; }
+
+.tile-block { color:#000; background:#aaa; }
+
+/*html*/
+
+/*php*/
+
+/*boootstrap*/
