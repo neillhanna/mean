@@ -5,7 +5,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res) {
-     mongoose.connect('localhost', 'dev');
+     mongoose.connect('127.0.0.1', 'dev');
 
         var Find = user.find( {}, 'lastname firstname email', function(err, find){
             //res.send('api');
@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
 
 /*Post/insert user */
 router.get('/:firstname/:lastname/:email', function(req, res) {
-     mongoose.connect('localhost', 'dev');
+     mongoose.connect('127.0.0.1', 'dev');
 
      var Post = new user({
         firstname: req.params.firstname,
