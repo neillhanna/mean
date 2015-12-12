@@ -1,4 +1,4 @@
-#!/nodejs
+#!../../nodejs
 var debug = require('debug')('OpenShift-Sample-App');
 var app = require('../app');
 
