@@ -5,7 +5,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res) {
-     mongoose.connect('mongodb://admin:6Nx5jAkXlKkQ@127.0.0.1/dev');
+     mongoose.connect('mongodb://admin:6Nx5jAkXlKkQ@localhost/dev');
 
         var Find = user.find( {}, 'lastname firstname email', function(err, find){
             //res.send('api');
@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
 
 /*Post/insert user */
 router.get('/:firstname/:lastname/:email', function(req, res) {
-     mongoose.connect('mongodb://admin:6Nx5jAkXlKkQ@127.0.0.1/dev');
+     mongoose.connect('mongodb://admin:6Nx5jAkXlKkQ@localhost/dev');
 
      var Post = new user({
         firstname: req.params.firstname,
