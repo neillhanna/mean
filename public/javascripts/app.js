@@ -1,9 +1,10 @@
-var myWebsite = angular.module('myWebsite', [
+angular.module('myWebsite', [
   'ngRoute',
-  'myWebsiteControllers'
-]);
+  'myWebsiteControllers',
+  'userService'
+])
 
-myWebsite.config(['$routeProvider',
+.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/', {
@@ -33,4 +34,4 @@ myWebsite.config(['$routeProvider',
       otherwise({
         redirectTo: '/'
       });
-  }]);
+}]);

@@ -4,35 +4,54 @@ angular.module('myWebsiteControllers', [])
     $scope.isActive = function(route) {
         return route === $location.path();
     };
+})
+
+.controller('indexCtrl', function($scope, $http) {
+
+})
+
+.controller('meanCtrl', function($scope, $http) {
+    //$scope.phoneId = $routeParams.phoneId;
+})
+
+
+.controller('phpCtrl', function($scope, $http) {
+    //$scope.phoneId = $routeParams.phoneId;
+})
+
+
+.controller('bsCtrl', function($scope, $http) {
+    //$scope.phoneId = $routeParams.phoneId;
+})
+
+.controller('demoCtrl', function($scope, $http, Users) {
+            //$scope.formData = {};
+            Users.get()
+            .success(function(data) {
+                    $scope.users = data;
+            });
+
+            $scope.createUser = function() {
+                    
+                if (!$.isEmptyObject($scope.formData)) {
+                    
+                    Users.create($scope.formData)
+                        
+                    .success(function(data) {
+                            //$scope.formData = {};
+                            $scope.users = data;
+                    });
+                };
+                
+            };
+
+            $scope.deleteUser = function(id) {
+                
+                Users.delete(id)
+                
+                .success(function(data) {
+                        $scope.users = data;
+             });
+                
+        };
 });
-
-.controller('indexCtrl', ['$scope', '$http', 
-    function ($routeParams, $scope, $http) {
-        $http.get("/users").then(function(response) {
-            $scope.users = response.data;
-        });
-}]);
-
-.controller('meanCtrl', ['$scope', '$http', 
-  function($routeParams, $scope, $http) {
-    //$scope.phoneId = $routeParams.phoneId;
-}]);
-
-
-.controller('phpCtrl', ['$scope', '$http', 
-  function($routeParams, $scope, $http) {
-    //$scope.phoneId = $routeParams.phoneId;
-}]);
-
-
-.controller('bsCtrl', ['$scope', '$http', 
-  function($routeParams, $scope, $http) {
-    //$scope.phoneId = $routeParams.phoneId;
-}]);
-
-.controller('demoCtrl', ['$scope', '$http', 
-  function($routeParams, $scope, $http) {
-        $http.get("/users").then(function(response) {
-            $scope.users = response.data;
-        });
-}]);
