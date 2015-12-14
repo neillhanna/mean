@@ -5,12 +5,13 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res) {
-       console.log('openshift var ' + process.env.OPENSHIFT_NODEJS_IP);
-       if(process.env.OPENSHIFT_NODEJS_IP == 'undefined') {
-            mongoose.connect('mongodb://admin:6Nx5jAkXlKkQ@127.8.223.130:27017/dev')
+
+       if(location.host == '192.168.72.140' ) {
+           mongoose.connect('localhost','dev');            
        }
-       else { 
-           mongoose.connect('localhost','dev');
+       else {
+           mongoose.connect('mongodb://admin:6Nx5jAkXlKkQ@127.8.223.130:27017/dev');
+
        }
        
         var Find = user.find( {}, 'lastname firstname email', function(err, find){
@@ -24,11 +25,13 @@ router.get('/', function(req, res) {
 
 /*insert user */
 router.get('/:firstname/:lastname/:email', function(req, res) {
-       if(process.env.OPENSHIFT_NODEJS_IP != 'undefined') {
-            mongoose.connect('mongodb://admin:6Nx5jAkXlKkQ@127.8.223.130:27017/dev')
+
+       if(location.host == '192.168.72.140' ) {
+           mongoose.connect('localhost','dev');            
        }
-       else { 
-           mongoose.connect('localhost','dev');
+       else {
+           mongoose.connect('mongodb://admin:6Nx5jAkXlKkQ@127.8.223.130:27017/dev');
+
        }
        
      var Post = new user({
