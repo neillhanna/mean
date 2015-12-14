@@ -1,6 +1,6 @@
 angular.module('userService', [])
 
-.factory('users', function($http){
+.factory('Users', function($http){
        
      return {
          
