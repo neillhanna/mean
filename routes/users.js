@@ -6,12 +6,12 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', function(req, res) {
 
-       if(location.host == '192.168.72.140' ) {
-           mongoose.connect('localhost','dev');            
-       }
-       else {
+       if(process.env.OPENSHIFT_NODEJS_IP == '127.8.223.129' ) {
            mongoose.connect('mongodb://admin:6Nx5jAkXlKkQ@127.8.223.130:27017/dev');
 
+       }
+       else {
+           mongoose.connect('localhost','dev');            
        }
        
         var Find = user.find( {}, 'lastname firstname email', function(err, find){
@@ -26,12 +26,12 @@ router.get('/', function(req, res) {
 /*insert user */
 router.get('/:firstname/:lastname/:email', function(req, res) {
 
-       if(location.host == '192.168.72.140' ) {
-           mongoose.connect('localhost','dev');            
-       }
-       else {
+       if(process.env.OPENSHIFT_NODEJS_IP == '127.8.223.129' ) {
            mongoose.connect('mongodb://admin:6Nx5jAkXlKkQ@127.8.223.130:27017/dev');
 
+       }
+       else {
+           mongoose.connect('localhost','dev');            
        }
        
      var Post = new user({
