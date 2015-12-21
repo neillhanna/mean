@@ -1,10 +1,41 @@
-<div data-ng-controller="demoCtrl">
+<div class="container" id="demo">
     <div class="row col-md-12">
-        <ul>
-            <li data-ng-repeat="x in users">
-                {{ x.firstname + ', ' + x.lastname + ' ' + x.email }}
-            </li>
-        </ul>
+        <div class="well well-lg row col-md-4">
+            <form data-ng-submit="createUser()" class="form-group" id="createUsersForm">
+                <label for="firstname">Firstname </label>
+                <input type="text" data-ng-model="firstname" id="firstname" name="firstname" class="form-control" placeholder="Firstname"/>
+                <label for="lastname">Lastname </label>
+                <input type="text" data-ng-model="lastname" id="lastname" name="lastname" class="form-control" placeholder="Lasstname"/>
+                <label for="email">email </label>
+                <input type="email" data-ng-model="email" id="email" name="email" class="form-control" placeholder="Email"/><br />
+                <input type="submit" class="btn btn-default form-control" value="Add User" />
+            </form>
+        </div>
+
+        <div class="row col-md-8 table-responsive table-condensed" >
+            <table class="table table-hover">
+                <thead>
+                	<tr>
+                                <th>#</th>
+                		<th>Firstname</th>
+                		<th>Lastname</th>
+                		<th>Email</th>
+                		<th></th>
+                	</tr>
+                </thead>
+                <tbody data-ng-repeat="x in users track by $index">
+                        <tr>
+                            <th scope="row">{{ $index+1 }}</th>
+                            <td>{{ x.firstname }}</td>
+                            <td>{{ x.lastname }}</td>
+                            <td>{{ x.email }}</td>
+                            <td><button class="btn btn-default edit-btn" onclick="edit(x);">Edit</button></td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+        
     </div>
+
 </div>
  

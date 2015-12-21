@@ -7,11 +7,11 @@ angular.module('userService', [])
         get : function() {
            return $http.get("/users");
         },
-        create : function(userData) {
-           return $http.post("/users", userData);  
+        create : function(scope) {
+           return $http.get("/users/create/" + scope.firstname + "/" + scope.lastname + "/" + scope.email);
         },
         delete : function(id) {
-            return $http.delete("/users/" + id);
+            return $http.delete("/users/delete/" + id);
         }
 
     }

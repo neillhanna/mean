@@ -24,7 +24,7 @@ router.get('/', function(req, res) {
 });
 
 /*insert user */
-router.get('/:firstname/:lastname/:email', function(req, res) {
+router.get('/create/:firstname/:lastname/:email', function(req, res) {
 
        if(process.env.OPENSHIFT_NODEJS_IP == '127.8.223.129' ) {
            mongoose.connect('mongodb://admin:6Nx5jAkXlKkQ@127.8.223.130:27017/dev');
@@ -34,66 +34,65 @@ router.get('/:firstname/:lastname/:email', function(req, res) {
            mongoose.connect('localhost','dev');            
        }
        
+       
      var Post = new user({
         firstname: req.params.firstname,
         lastname: req.params.lastname,
         email: req.params.email
      });
 
-     Post.save(function(err, Post) {
+     Post.save(function(err, post) {
         if (err) return console.error(err);
-        console.dir(Post);
-        res.json(Post);
+        console.dir(post);
+        res.json(post);
         mongoose.connection.close();
      });
     
 });
 
 /*update user */
-router.get('/:firstname/:lastname/:email', function(req, res) {
-       if(process.env.OPENSHIFT_NODEJS_IP != 'undefined') {
-            mongoose.connect('mongodb://admin:6Nx5jAkXlKkQ@127.8.223.130:27017/dev')
+router.get('/update', function(req, res) {
+    
+       if(process.env.OPENSHIFT_NODEJS_IP == '127.8.223.129' ) {
+           mongoose.connect('mongodb://admin:6Nx5jAkXlKkQ@127.8.223.130:27017/dev');
+
        }
-       else { 
-           mongoose.connect('localhost','dev');
+       else {
+           mongoose.connect('localhost','dev');            
        }
        
-     var Post = new user({
-        firstname: req.params.firstname,
-        lastname: req.params.lastname,
-        email: req.params.email
+     var Update = new user({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email
      });
 
-     Post.save(function(err, Post) {
+        Update.save(function(err, post) {
         if (err) return console.error(err);
-        console.dir(Post);
-        res.json(Post);
+        console.dir(post);
+        res.json(post);
         mongoose.connection.close();
      });
-    
+     
 });
 
 /*delete user */
-router.get('/:firstname/:lastname/:email', function(req, res) {
-       if(process.env.OPENSHIFT_NODEJS_IP != 'undefined') {
-            mongoose.connect('mongodb://admin:6Nx5jAkXlKkQ@127.8.223.130:27017/dev')
+router.get('/delete/:id', function(req, res) {
+    
+       if(process.env.OPENSHIFT_NODEJS_IP == '127.8.223.129' ) {
+           mongoose.connect('mongodb://admin:6Nx5jAkXlKkQ@127.8.223.130:27017/dev');
+
        }
-       else { 
-           mongoose.connect('localhost','dev');
+       else {
+           mongoose.connect('localhost','dev');            
        }
        
-     var Post = new user({
-        firstname: req.params.firstname,
-        lastname: req.params.lastname,
-        email: req.params.email
-     });
-
-     Post.save(function(err, Post) {
-        if (err) return console.error(err);
-        console.dir(Post);
-        res.json(Post);
-        mongoose.connection.close();
-     });
+//      save(function(err, post) {
+//         if (err) return console.error(err);
+//         console.dir(post);
+//         res.json(post);
+//         mongoose.connection.close();
+//      });
     
 });
 

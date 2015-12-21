@@ -25,24 +25,32 @@ angular.module('myWebsiteControllers', [])
 })
 
 .controller('demoCtrl', function($scope, $http, Users) {
+            
             //$scope.formData = {};
             Users.get()
             .success(function(data) {
                     $scope.users = data;
+                    //console.log($scope.users);
             });
-
+            
+            
+            
+            
             $scope.createUser = function() {
+                
+                //console.log($scope.firstname);
+                
+               // if (!$.isEmptyObject($scope.formData)) {
                     
-                if (!$.isEmptyObject($scope.formData)) {
-                    
-                    Users.create($scope.formData)
+                    Users.create($scope)
                         
                     .success(function(data) {
-                            //$scope.formData = {};
-                            $scope.users = data;
+                            $scope.users.push(data) ;
+                            //console.log(data);
+                                       
                     });
-                };
-                
+                //};
+                //event.preventDefault();
             };
 
             $scope.deleteUser = function(id) {
@@ -50,8 +58,14 @@ angular.module('myWebsiteControllers', [])
                 Users.delete(id)
                 
                 .success(function(data) {
-                        $scope.users = data;
-             });
+                        //$scope.users = data;
+                });
                 
-        };
+            };
+            
+            
+            
+            console.log($scope);
+            
+            
 });
