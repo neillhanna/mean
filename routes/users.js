@@ -124,7 +124,7 @@ router.get('/delete/:id', function(req, res) {
             
             found.remove(function(){
                 mongoose.connection.close();
-                return res.json({'message' : 'user with id ' + found['_id'] + ' has been deleted');
+                return res.json({'message' : 'user with id ' + found['_id'] + ' has been deleted'});
             });
         });
     
