@@ -1,7 +1,9 @@
+angular.module('ui-bootstrap', ['ngAnimate', 'ui.bootstrap']);
 angular.module('myWebsite', [
   'ngRoute',
   'myWebsiteControllers',
-  'userService'
+  'userService',
+  'ui-bootstrap'
 ])
 
 .config(['$routeProvider',

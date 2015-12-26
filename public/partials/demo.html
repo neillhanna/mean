@@ -1,13 +1,13 @@
 <div class="container" id="demo">
     <div class="row col-md-12">
         <div class="well well-lg row col-md-4">
-            <form data-ng-submit="createUser()" class="form-group" id="createUsersForm">
+            <form data-ng-submit="createUser(formData)" class="form-group" id="createUsersForm">
                 <label for="firstname">Firstname </label>
-                <input type="text" data-ng-model="firstname" id="firstname" name="firstname" class="form-control" placeholder="Firstname"/>
+                <input type="text" data-ng-model="formData.firstname" id="firstname" name="firstname" class="form-control" placeholder="Firstname"/>
                 <label for="lastname">Lastname </label>
-                <input type="text" data-ng-model="lastname" id="lastname" name="lastname" class="form-control" placeholder="Lasstname"/>
+                <input type="text" data-ng-model="formData.lastname" id="lastname" name="lastname" class="form-control" placeholder="Lastname"/>
                 <label for="email">email </label>
-                <input type="email" data-ng-model="email" id="email" name="email" class="form-control" placeholder="Email"/><br />
+                <input type="email" data-ng-model="formData.email" id="email" name="email" class="form-control" placeholder="Email"/><br />
                 <input type="submit" class="btn btn-default form-control" value="Add User" />
             </form>
         </div>
@@ -21,18 +21,23 @@
                 		<th>Lastname</th>
                 		<th>Email</th>
                 		<th></th>
+                		<th></th>
                 	</tr>
                 </thead>
-                <tbody data-ng-repeat="x in users track by $index">
-                        <tr>
-                            <th scope="row">{{ $index+1 }}</th>
-                            <td>{{ x.firstname }}</td>
-                            <td>{{ x.lastname }}</td>
-                            <td>{{ x.email }}</td>
-                            <td><button class="btn btn-default edit-btn" onclick="edit(x);">Edit</button></td>
+                <tbody data-ng-repeat="x in userPage">
+                        <tr data-ng-hide="x.deleted">
+                            <th scope="row">{{ x.index }}</th>
+                            <td><span data-ng-hide="x.editing">{{ x.firstname }}</span><input type="text" data-ng-show="x.editing" data-ng-model="x.firstname" autofocus></td>
+                            <td><span data-ng-hide="x.editing">{{ x.lastname }}</span><input type="text" data-ng-show="x.editing" data-ng-model="x.lastname"></td>
+                            <td><span data-ng-hide="x.editing">{{ x.email }}</span><input type="text" data-ng-show="x.editing" data-ng-model="x.email"></td>
+                            <td><button class="btn btn-default edit-btn" data-ng-click="editUser(x)" data-ng-hide="x.editing" >Edit</button><button data-ng-show="x.editing" class="btn btn-warning save-btn" data-ng-click="updateUser(x)" >Save</button></td>
+                            <td><button class="btn btn-danger delete-btn" data-ng-click="deleteUser(x)">Delete</button></td>
                         </tr>
                 </tbody>
             </table>
+            
+                    <uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" data-ng-change="pageChanged()" num-pages="numPages" ></uib-pagination>
+                    
         </div>
         
     </div>

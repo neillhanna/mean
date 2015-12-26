@@ -4,6 +4,9 @@ body { padding-top: 50px; background:#000 url('/images/fractal.png') top center 
 .fullwidth { width:100%; }
 .table-hover tbody tr:hover { background-color:#fff; }
 
+/*styles required by angular-ui*/
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
 /*header styles*/
 header { height:0px; width:100%; }
 

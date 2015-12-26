@@ -11,7 +11,10 @@ angular.module('userService', [])
            return $http.get("/users/create/" + scope.firstname + "/" + scope.lastname + "/" + scope.email);
         },
         delete : function(id) {
-            return $http.delete("/users/delete/" + id);
+            return $http.get("/users/delete/" + id);
+        },
+        update : function(userObj) {
+            return $http.get("/users/update/" + userObj._id + "/" + userObj.firstname + "/" + userObj.lastname + "/" + userObj.email);
         }
 
     }
