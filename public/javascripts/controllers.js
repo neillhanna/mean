@@ -97,7 +97,7 @@ angular.module('myWebsiteControllers', [])
 
             /*for pagination*/
             $scope.currentPage = 1;
-            $scope.maxSize = 5;
+            $scope.maxSize = 3;
             $scope.totalItems = 0;
             $scope.userPage = [];
             
