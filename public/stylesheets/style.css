@@ -16,6 +16,9 @@ body { padding-top: 50px; background:#000 url('/images/fractal.png') top center 
 
 /*header styles*/
 header { height:0px; width:100%; }
+#navbar button{
+    margin-left:20px;
+}
 
 /*footer styles*/
 footer { height:300px; width:100%; background:#083643; color:#fff; }
