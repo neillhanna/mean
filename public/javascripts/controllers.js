@@ -15,13 +15,9 @@ angular.module('myWebsiteControllers', [])
 })
 
 
-.controller('phpCtrl', function($scope, $http) {
+.controller('dashboardCtrl', function($scope, $http) {
     //$scope.phoneId = $routeParams.phoneId;
-})
-
-
-.controller('bsCtrl', function($scope, $http) {
-    //$scope.phoneId = $routeParams.phoneId;
+    
 })
 
 .controller('demoCtrl', function($scope, $http, Users) {

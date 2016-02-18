@@ -21,9 +21,9 @@ angular.module('myWebsite', [
         templateUrl: '/partials/mean.html',
         controller: 'meanCtrl'
       }).
-      when('/php', {
-        templateUrl: '/partials/php.html',
-        controller: 'phpCtrl'
+      when('/dashboard', {
+        templateUrl: '/partials/dashboard.html',
+        controller: 'dashboardCtrl'
       }).
       when('/bootstrap', {
         templateUrl: '/partials/bootstrap.html',
