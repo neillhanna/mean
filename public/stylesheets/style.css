@@ -42,6 +42,7 @@ footer .row { padding:20px; }
 #pageHome .panel-heading{
     background-color:#3A5761;
     border-color:#3A5761;
+    margin:0;
 }
 #pageHome .panel-primary{
     border-color:#3A5761;
